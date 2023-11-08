@@ -23,11 +23,21 @@ fun diffConj([],b: int list):int list = [] |
             else diffConj(tl a,b);
 
 
-fun diffSumConj(a:int list,b: int list) = 
+fun diffSimConj(a:int list,b: int list) = 
         (diffConj(a,b))@(diffConj(b,a));
 
 
-diffSumConj([1,2,5,6],[1,2,3,4])
+fun addConj(a:int list, b: int) = a@[b];
+fun remConj(a:int list, b:int)= diffConj(a,[b]);
+
+fun tamConj([]) = 0 |
+        tamConj(a:int list) = 
+            1+tamConj(tl a);
+
+fun ehElemenConj([], element: int) = false |
+        ehElemenConj(a:int list, element: int) = 
+            hd a = element orelse ehElemenConj(tl a,element);
+
 fun intersConj(a: int list, []:int list)= []
         | intersConj(a: int list, b:int list)= 
         if isPresent(a, hd b) then
