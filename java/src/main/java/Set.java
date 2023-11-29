@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Set {
+public class        Set {
 
     private List<String> elements;
 
@@ -55,11 +55,8 @@ public class Set {
     }
 
     public static Set diffSimConj(Set a, Set b){
-        List<String> diffSim = new ArrayList<>(a.elements);
-        diffSim.removeAll(b.elements);
-        List<String> diffSim2 = new ArrayList<>(b.elements);
-        diffSim2.removeAll(a.elements);
-        diffSim.addAll(diffSim2);
+        List<String> diffSim = new ArrayList<>(diffConj(a,b).elements);
+        diffSim.addAll(diffConj(b,a).elements);
         return new Set(diffSim);
     }
 

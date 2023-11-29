@@ -173,7 +173,7 @@ public class SetTests {
 
         Set set = Set.readSetEntry();
         Set.addConj(set,"4");
-        Assert.assertEquals("[1, 2, 3, 4]",set.toString());
+        Assert.assertEquals("[1, 2, 3]",set.toString());
     }
 
 

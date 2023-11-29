@@ -1,5 +1,16 @@
 # TP Linguagnes de Programação - Implementação Java
 
+## Dependências
+
+- Oracle OpenJdk 17 LTS
+- mvn
+
+```sh
+# Java
+sudo apt install openjdk-17 openjdk-17-jre
+# Gerenciador de dependências
+sudo apt install maven
+```
 ## Descrição do TAD
 
 O construtor da classe Set é privado, para evitar erros de inputs. No caso, o métood estático _readEntry_ 

@@ -6,10 +6,7 @@ fun ehVazio(set:int list):bool =
 
 fun uniaoConj(a:int list, []):int list = []  |
     uniaoConj(a: int list, b: int list): int list = 
-    (* if not containsElement(a, hd b) *)
       [hd a]@[hd b]@uniaoConj(tl a, tl b);
-    (* else *)
-    (* a@uniaoConj(a, tl b) *)
 
 fun  isPresent([]: int list, element:int):bool = false
         |isPresent(a:int list, element:int): bool =
