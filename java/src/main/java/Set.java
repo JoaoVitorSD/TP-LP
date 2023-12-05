@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class        Set {
+public class  Set {
 
     private List<String> elements;
 
@@ -10,69 +11,62 @@ public class        Set {
         this.elements = new ArrayList<>();
     }
 
-    private Set(List<String> elements){
-        this.elements = elements;
+    public Set(List<String> elements){
+        this.elements = new ArrayList<>(elements);
     }
-    private void addElement(String element) {
-        this.elements.add(element);
-    }
-    public static Set readSetEntry(){
-        Scanner sc = new Scanner(System.in);
 
-        Set set = new Set();
-        int size = sc.nextInt();
-        sc.nextLine();
-        for(int i = 0; i< size; i++){
-            set.addElement(sc.nextLine());
-        }
-        sc.close();
-        return set;
+    public List<String> getElements() {
+        return elements;
     }
+
+
     @Override
     public String toString() {
         return elements.toString();
     }
-    public static boolean ehVazio(Set a){
-        return a.elements.isEmpty();
+    public boolean ehVazio(){
+        return elements.isEmpty();
     }
 
-    public static Set uniaoConj(Set a, Set b){
-        List<String> union = new ArrayList<>(a.elements);
-        union.addAll(b.elements);
-        return  new Set(union);
+    public Set uniaoConj(Set b){
+        List<String> union = new ArrayList<>(elements);
+        union.addAll(b.elements.stream().filter(x -> !elements.contains(x)).toList());
+        return new Set(union);
     }
 
-    public static Set insersConj(Set a, Set b){
-        List<String> inters = new ArrayList<>(a.elements);
+    public Set intersConj(Set b){
+        List<String> inters = new ArrayList<>(elements);
         inters.retainAll(b.elements);
         return new Set(inters);
     }
 
-    public static Set diffConj(Set a, Set b){
-        List<String> diff = new ArrayList<>(a.elements);
+    public Set diffConj(Set b){
+        List<String> diff = new ArrayList<>(elements);
         diff.removeAll(b.elements);
         return new Set(diff);
     }
 
-    public static Set diffSimConj(Set a, Set b){
-        List<String> diffSim = new ArrayList<>(diffConj(a,b).elements);
-        diffSim.addAll(diffConj(b,a).elements);
+    public Set diffSimConj(Set b){
+        List<String> diffSim = new ArrayList<>(diffConj(b).elements);
+        diffSim.addAll(b.diffConj(this).elements);
         return new Set(diffSim);
     }
 
-    public static void addConj(Set a, String x){
-        a.elements.add(x);
+    public void addConj(String x){
+        if(!elements.contains(x))
+            elements.add(x);
     }
 
-    public static void remConj(Set a, String x){
-        a.elements.remove(x);
+    public void remConj( String x){
+        if(elements.contains(x))
+            elements.remove(x);
     }
 
-    public static Integer tamConj(Set a){
-        return a.elements.size();
+    public Integer tamConj(){
+        return elements.size();
     }
 
-    public static boolean ehElemConj(Set a, String x){
-        return a.elements.contains(x);
+    public boolean ehElemConj(String x){
+        return elements.contains(x);
     }
 }
