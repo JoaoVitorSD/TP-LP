@@ -2,8 +2,17 @@
 
 Esta implementação representa os conjuntos como lista de inteiros em suas operações.
 
+# Instalação
+```sh
+sudo apt install smlnj
+```
 
-## Funcionalidades Implementadas
+# Estrutura de dados
+
+A estrutura de dados utilizada é uma lista de inteiros. Dessa forma, os elementos do add e remove também são ints.
+
+
+# Algoritmo implementado
 
 **As funcionalidades possuem o pseudo código similar ao sml, visando representar a lógica da implementação de forma simples.**
 
@@ -35,3 +44,17 @@ Esta implementação representa os conjuntos como lista de inteiros em suas oper
 
 - **intersConj**- verifica se elemento de b está presente em a, se sim,é retornado o elemento concatenado de outra chamada, passando o tl de b
     - > if isPresent(a, hd b) then [hd b]@intersConj(, tl b) else intersConj(a, tl b)
+
+# Testes
+
+Os testes rodam ifs que printam se o teste deu erro e caso contrário retornam (),
+
+# Running
+
+Com o sml instalado, basta rodar o arquivo main.sml ou o test.sml(para testar).
+```sh
+sml main.sml
+sml test.sml
+```
+
+Os testes são rodados automaticamete ao executar o arquivo teste.sh
